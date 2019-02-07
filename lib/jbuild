@@ -1,0 +1,7 @@
+(jbuild_version 1)
+
+(library
+  ((name cryptocodewatch)
+   (public_name cryptocodewatch)
+   (libraries (core github github.unix yojson))
+   (preprocess (pps (ppx_sexp_conv)))))

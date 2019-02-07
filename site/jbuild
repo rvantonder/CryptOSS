@@ -1,0 +1,14 @@
+(jbuild_version 1)
+
+(executables
+ ((names (site_html_generator))
+  (libraries (core cryptocodewatch tyxml yojson))
+   (preprocess (pps (ppx_let)))
+    (flags (-w -3))))
+
+
+(alias
+  ((name DEFAULT)
+   (deps
+    (site_html_generator.exe
+     (files_recursively_in static)))))

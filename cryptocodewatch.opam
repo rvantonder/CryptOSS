@@ -1,0 +1,19 @@
+opam-version: "1.2"
+version: "1.0"
+maintainer: "rvantonder@gmail.com"
+authors: ["rvt"]
+homepage: "https://github.com/rvantonder/cryptocodewatch"
+bug-reports: "https://github.com/rvantonder/cryptocodewatch/issues"
+dev-repo: "https://github.com/rvantonder/cryptocodewatch.git"
+license: "Apache-2.0"
+build: [["jbuilder" "build" "-p" name "-j" jobs "@install"]]
+build-test: [["jbuilder" "runtest" "-p" name "-j" jobs]]
+depends: [
+  "core"
+  "opium"
+  "tls"
+  "yojson"
+  "github"
+  "hmap"
+  "ounit" {test}
+]

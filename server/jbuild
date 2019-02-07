@@ -1,0 +1,11 @@
+(jbuild_version 1)
+
+(executable
+ ((libraries (core hmap opium))
+  (name server)
+  (flags (-w -3))))
+
+(alias
+  ((name DEFAULT)
+   (deps (server.exe
+          (files_recursively_in certs)))))
