@@ -28,7 +28,7 @@ Then: come back to this repository and do `make`. You should now be able to just
 
 ## MSR data publishing
 
-Place the raw data files ([link TBA])(https://tba.com)) in a folder called `datastore`.
+Place the raw data files ([final link TBA](https://tba.com)) in a folder called `datastore`.
 
 Run `./pipeline.sh`. 
 
