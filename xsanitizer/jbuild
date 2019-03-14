@@ -1,0 +1,10 @@
+(jbuild_version 1)
+
+(executable
+ ((libraries (core))
+  (modules (sanitize record))
+  (name sanitize)))
+
+(alias
+ ((name DEFAULT)
+  (deps (sanitize.exe))))
