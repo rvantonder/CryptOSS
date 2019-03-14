@@ -1,6 +1,6 @@
 #!/bin/bash
 
-find datastore -name "*.tar.gz"  | xargs -L 1 -I % -P 4 dirname % | xargs -L 1 -I % -P 4 bash -c "./msr.sh %"
+find datastore -name "*.tar.gz"  | xargs -L 1 -I % dirname % | xargs -L 1 -I % -P 20 bash -c "./csv-of-dat.sh %"
 
 echo 'Collating it all...'
 rm all.csv
