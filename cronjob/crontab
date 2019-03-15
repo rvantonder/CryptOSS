@@ -1,0 +1,45 @@
+# Edit this file to introduce tasks to be run by cron.
+# m h  dom mon dow   command
+
+5 4 * * * cd ~/CryptOSS/cronjob && ./ranks.sh
+
+10 4 * * * cd ~/CryptOSS/cronjob && ./save.sh 0 GH_TOKEN_1
+40 4 * * * cd ~/CryptOSS/cronjob && ./save.sh 1 GH_TOKEN_2
+0 5 * * *  cd ~/CryptOSS/cronjob && ./save.sh 2 GH_TOKEN_3
+
+20 5 * * * cd ~/CryptOSS/cronjob && ./save.sh 3 GH_TOKEN_1
+40 5 * * * cd ~/CryptOSS/cronjob && ./save.sh 4 GH_TOKEN_2
+0 6 * * *  cd ~/CryptOSS/cronjob && ./save.sh 5 GH_TOKEN_3
+
+20 6 * * * cd ~/CryptOSS/cronjob && ./save.sh 4 GH_TOKEN_1
+40 6 * * * cd ~/CryptOSS/cronjob && ./save.sh 5 GH_TOKEN_2
+0 7 * * *  cd ~/CryptOSS/cronjob && ./save.sh 6 GH_TOKEN_3
+
+20 7 * * * cd ~/CryptOSS/cronjob && ./save.sh 7 GH_TOKEN_1
+40 7 * * * cd ~/CryptOSS/cronjob && ./save.sh 8 GH_TOKEN_2
+0 8 * * *  cd ~/CryptOSS/cronjob && ./save.sh 9 GH_TOKEN_3
+
+20 8 * * * cd ~/CryptOSS/cronjob && ./save.sh 10 GH_TOKEN_1
+40 8 * * * cd ~/CryptOSS/cronjob && ./save.sh 11 GH_TOKEN_2
+0 9 * * *  cd ~/CryptOSS/cronjob && ./save.sh 12 GH_TOKEN_3
+
+20 9 * * * cd ~/CryptOSS/cronjob && ./save.sh 13 GH_TOKEN_1
+40 9 * * * cd ~/CryptOSS/cronjob && ./save.sh 14 GH_TOKEN_2
+0 10 * * * cd ~/CryptOSS/cronjob && ./save.sh 15 GH_TOKEN_3
+
+20 10 * * * cd ~/CryptOSS/cronjob && ./save.sh 16 GH_TOKEN_1
+40 10 * * * cd ~/CryptOSS/cronjob && ./save.sh 17 GH_TOKEN_2
+0 11 * * *  cd ~/CryptOSS/cronjob && ./save.sh 18 GH_TOKEN_3
+
+20 11 * * * cd ~/CryptOSS/cronjob && ./save.sh 19 GH_TOKEN_1
+40 11 * * * cd ~/CryptOSS/cronjob && ./save.sh 20 GH_TOKEN_2
+0 12 * * *  cd ~/CryptOSS/cronjob && ./save.sh 21 GH_TOKEN_3
+20 12 * * * cd ~/CryptOSS/cronjob && ./save.sh 22 GH_TOKEN_1
+
+40 12 * * * cd ~/CryptOSS/cronjob && ./save.sh 23 GH_TOKEN_2
+0 13 * * *  cd ~/CryptOSS/cronjob && ./save.sh 24 GH_TOKEN_3
+20 13 * * * cd ~/CryptOSS/cronjob && ./save.sh 25 GH_TOKEN_1
+
+40 13 * * * cd ~/CryptOSS/cronjob && ./save.sh 26 GH_TOKEN_2
+0 14 * * *  cd ~/CryptOSS/cronjob && ./save.sh 27 GH_TOKEN_3
+20 14 * * * cd ~/CryptOSS/cronjob && ./save.sh 28 GH_TOKEN_1
