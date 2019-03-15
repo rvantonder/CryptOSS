@@ -8,6 +8,6 @@ let title_h1 =
   ; h1 ~a:[ a_class [ "text-center" ] ] [
       i ~a:[ a_class [ "fa fa-angle-right"; "bigass" ] ] []
     ; space ()
-    ; pcdata "Crypto Code Watch"
+    ; pcdata "CryptOSS"
     ]
   ]
