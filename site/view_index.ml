@@ -95,13 +95,9 @@ let row date id name stats =
   let cell_id = th ~a:[ a_scope `Row; a_class ["text-center"] ] [ pcdata id ] in
   let cell_name =
     let currency_github_link =
-      (* XXX date/currency *)
-      a ~a:[ a_href (Xml.uri_of_string "/"^date^"/currency/"^path) ] [ pcdata name ] in
+      a ~a:[ a_href (Xml.uri_of_string (Site_prefix.prefix ^/ date ^/ "currency" ^/ path)) ] [ pcdata name ] in
     td ~a:[ a_class [ "text-left" ] ]
-      [ (*on_fire*)
-        (*; space ()*)
-       currency_github_link
-      ]
+      [ currency_github_link ]
   in
   let cell_additions =
     let additions = stats.Crypto.Stats.changes_7d |> fst in
@@ -183,9 +179,6 @@ let top_header_row =
   let cell_changes =
     th ~a:[ a_colspan 2
           ; a_class ["text-center"; "no-left-padding"; ]
-            (*; B.a_data_toggle "tooltip"
-              ; B.a_data_placement "top"
-              ; B.a_data_title "XXXXXXXXXXXXXXXXXXXXXXXX"*)
           ] [
       div_nlp; pcdata "Changes (7d)"; div_nlp'
     ]
@@ -287,8 +280,6 @@ let column_headers_thead =
     top_header_row
   ; top_header_second_row
   ]
-
-
 
 (**
    table-responsive needs to be in a parent div, see:

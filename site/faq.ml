@@ -161,6 +161,7 @@ let body () =
                   one, we do not to include it in the aggregate."
         ; br ()
         ; br ()
+        (*
         ; pcdata "Our intention is to be honest and fair about reflecting \
                   activity of open source contributions for a unique \
                   cryptocurrency. On a case-by-case basis, we may manually \
@@ -169,7 +170,7 @@ let body () =
                   moment we have two case-specific rules: (1) exclude cloned and \
                   comitted 'nixpkgs' repositories (see a problematic case \
                  "
-        ; a ~a:[ a_href (Xml.uri_of_string "/currency/Santiment%20Network%20Token") ] [ pcdata "here"]
+        ; a ~a:[ a_href (Xml.uri_of_string (Site_prefix.prefix ^ "/2018-10-13/currency/Santiment%20Network%20Token")) ] [ pcdata "here"]
         ; pcdata " where it doesn't make sense to include nixpkgs) and (2) \
                   include all metrics for the core (forked) repository for \
                   litecoin."
@@ -180,6 +181,7 @@ let body () =
                 raw data for all individual repositories can be judged in the \
                 detailed view, without aggregation applied."
             ]
+        *)
         ]
     ; br ()
 
@@ -265,6 +267,7 @@ let body () =
     ; br ()
 
 
+    (*
     ; h3 [ pcdata "How often do you update the data?" ]
     ; p [ pcdata
             "Data is updated every 24 hours."
@@ -278,8 +281,8 @@ let body () =
              particular cryptocurrency, open source or otherwise, based on the \
              contents of this site."
         ]
+    *)
     ; br ()
-
     ]
   ; hr ()
   ; Footer.foot

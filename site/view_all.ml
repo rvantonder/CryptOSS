@@ -96,12 +96,9 @@ let row date id name stats =
   let cell_id = th ~a:[ a_scope `Row; a_class ["text-center"] ] [ pcdata id ] in
   let cell_name =
     let currency_github_link =
-      a ~a:[ a_href (Xml.uri_of_string "/"^date^"/currency/"^path) ] [ pcdata name ] in
+      a ~a:[ a_href (Xml.uri_of_string (Site_prefix.prefix ^/ date ^/ "currency" ^/ path)) ] [ pcdata name ] in
     td ~a:[ a_class [ "text-left" ] ]
-      [ (*on_fire*)
-        (*; space ()*)
-        currency_github_link
-      ]
+      [ currency_github_link ]
   in
   let cell_additions =
     let additions = stats.Crypto.Stats.changes_7d |> fst in

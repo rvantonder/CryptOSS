@@ -14,21 +14,21 @@ let row_navigation =
   B.row [
       div ~a:[ a_class [ "col-2"; ] ] [
         p [
-          a ~a:[ a_href (Xml.uri_of_string "/") ] [
+          a ~a:[ a_href (Xml.uri_of_string (Site_prefix.prefix ^ "/")) ] [
             pcdata "HOME"
           ]
         ]
       ]
     ; div ~a:[ a_class [ "col-2" ] ] [
         p [
-          a ~a:[ a_href (Xml.uri_of_string "/faq") ] [
+          a ~a:[ a_href (Xml.uri_of_string (Site_prefix.prefix ^ "/faq")) ] [
             pcdata "FAQ"
           ]
         ]
       ]
     ; div ~a:[ a_class [ "col-2" ] ] [
         p [
-          a ~a:[ a_href (Xml.uri_of_string "/disclaimer") ] [
+          a ~a:[ a_href (Xml.uri_of_string (Site_prefix.prefix ^ "/disclaimer")) ] [
             pcdata "DISCLAIMER"
           ]
         ]

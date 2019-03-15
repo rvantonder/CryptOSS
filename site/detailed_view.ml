@@ -420,9 +420,9 @@ let body crypto date stats =
     begin
       scripts @
       [ br ()
-      ; a ~a:[ a_href (Xml.uri_of_string ("/"^prev_date^"/currency/"^crypto.name)) ] [ pcdata "prev" ]
+      ; a ~a:[ a_href (Xml.uri_of_string (Site_prefix.prefix ^/ prev_date ^/ "currency" ^/ crypto.name)) ] [ pcdata "prev" ]
       ; br ()
-      ; a ~a:[ a_href (Xml.uri_of_string ("/"^next_date^"/currency/"^crypto.name)) ] [ pcdata "next" ]
+      ; a ~a:[ a_href (Xml.uri_of_string (Site_prefix.prefix ^/ next_date ^/ "currency" ^/ crypto.name)) ] [ pcdata "next" ]
       ; br ()
       ; B.container ([
             h1 ~a:[ a_class ["text-center"] ] [
