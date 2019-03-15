@@ -1,4 +1,5 @@
 open Core
+open Yojson
 
 type t = Record.t String.Table.t Date.Table.t
 
@@ -81,6 +82,17 @@ let () =
   (* generate null lines for all repos for missing dates *)
   let records_added = ref 0 in
   List.iter date_range ~f:(fun date ->
+      let ranks_lookup =
+        let open Yojson.Safe.Util in
+        let filename = "datastore" ^/ !!date ^/ "ranks.json" in
+        try
+          In_channel.with_file filename ~f:Yojson.Safe.from_channel
+          |> to_list
+          |> Option.some
+        with _ ->
+          Format.printf "%s@." (Format.sprintf "Could not parse json ranks file %s." filename);
+          None
+      in
       match Date.Table.find table date with
       | None ->
         let repo_table = String.Table.create () in
@@ -91,7 +103,35 @@ let () =
               | a :: b :: [] -> a, b
               | _ -> assert false
             in
-            let data = Record.null date crypto repo_name in
+            let ranks_data =
+              let open Yojson.Safe.Util in
+              let open Option in
+              ranks_lookup >>=
+              List.find_map ~f:(fun json ->
+                  let name = member "name" json |> to_string in
+                  if name = crypto then
+                    let symbol =
+                      try member "symbol" json |> to_string
+                      with _ -> "null"
+                    in
+                    let rank =
+                      try member "rank" json |> to_string
+                      with _ -> "null"
+                    in
+                    let price_usd =
+                      try member "price_usd" json |> to_string
+                      with _ -> "null"
+                    in
+                    let market_cap_usd =
+                      try member "market_cap_usd" json |> to_string
+                      with _ -> "null"
+                    in
+                    (*Format.printf "success@.";*)
+                    Some (symbol,rank,price_usd,market_cap_usd)
+                  else
+                    None)
+            in
+            let data = Record.null ?ranks_data date crypto repo_name in
             records_added := !records_added + 1;
             String.Table.add_exn repo_table ~key ~data);
         Date.Table.add_exn table ~key:date ~data:repo_table
@@ -105,7 +145,35 @@ let () =
                 | a :: b :: [] -> a, b
                 | _ -> assert false
               in
-              let data = Record.null date crypto repo_name in
+              let ranks_data =
+                let open Yojson.Safe.Util in
+                let open Option in
+                ranks_lookup >>=
+                List.find_map ~f:(fun json ->
+                    let name = member "name" json |> to_string in
+                    if name = crypto then
+                      let symbol =
+                        try member "symbol" json |> to_string
+                        with _ -> "null"
+                      in
+                      let rank =
+                        try member "rank" json |> to_string
+                        with _ -> "null"
+                      in
+                      let price_usd =
+                        try member "price_usd" json |> to_string
+                        with _ -> "null"
+                      in
+                      let market_cap_usd =
+                        try member "market_cap_usd" json |> to_string
+                        with _ -> "null"
+                      in
+                      (*Format.printf "success@.";*)
+                      Some (symbol,rank,price_usd,market_cap_usd)
+                    else
+                      None)
+              in
+              let data = Record.null ?ranks_data date crypto repo_name in
               records_added := !records_added + 1;
               String.Table.add_exn repo_table ~key ~data
             | Some _ -> ()

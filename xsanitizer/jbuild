@@ -1,7 +1,7 @@
 (jbuild_version 1)
 
 (executable
- ((libraries (core))
+ ((libraries (core yojson))
   (modules (sanitize record))
   (name sanitize)))
 

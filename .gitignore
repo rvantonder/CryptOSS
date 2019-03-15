@@ -6,3 +6,6 @@ _build
 *.dat
 *#.*
 datastore
+upload
+*.csv
+*.txt

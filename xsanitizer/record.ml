@@ -105,7 +105,12 @@ let create date cryptocurrency_name repo_name rest =
     None
 
 
-let null date cryptocurrency_name repo_name =
+let null ?ranks_data date cryptocurrency_name repo_name =
+  let symbol, market_cap_rank, price_usd, market_cap_usd =
+    match ranks_data with
+    | Some (a,b,c,d) -> a, b, c, d
+    | None -> "null", "null", "null", "null"
+  in
   { date
   ; cryptocurrency_name
   ; repo_name
@@ -126,10 +131,10 @@ let null date cryptocurrency_name repo_name =
   ; stars = -1
   ; forks = -1
   ; watchers = -1
-  ; symbol = "null"
-  ; market_cap_rank = "null"
-  ; price_usd = "null"
-  ; market_cap_usd = "null"
+  ; symbol
+  ; market_cap_rank
+  ; price_usd
+  ; market_cap_usd
   }
 
 let to_string
