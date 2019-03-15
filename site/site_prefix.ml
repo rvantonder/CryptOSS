@@ -1,2 +1,2 @@
 
-let prefix = "CryptOSS/"
+let prefix = "/CryptOSS"
