@@ -33,14 +33,6 @@ let row_navigation =
           ]
         ]
       ]
-
-    ; div ~a:[ a_class [ "col-2"; "text-right" ] ] [
-        p [
-          a ~a:[ a_href (Xml.uri_of_string "mailto:cryptocodewatch@gmail.com") ] [
-            pcdata "CONTACT"
-          ]
-        ]
-      ]
   ]
 
 let row_copyright =
