@@ -1,5 +1,5 @@
 open Core
-open Cryptocodewatch
+open Cryptoss
 open Tyxml.Html
 
 let changes_highcharts_js crypto =

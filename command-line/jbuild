@@ -1,7 +1,7 @@
 (jbuild_version 1)
 
 (executable
- ((libraries (core yojson github github.unix cryptocodewatch))
+ ((libraries (core yojson github github.unix cryptoss))
   (modules (crunch))
   (preprocess (pps (ppx_sexp_conv ppx_let)))
   (name crunch)))

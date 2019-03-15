@@ -2,7 +2,7 @@
 
 (executables
  ((names (site_html_generator))
-  (libraries (core cryptocodewatch tyxml yojson))
+  (libraries (core cryptoss tyxml yojson))
    (preprocess (pps (ppx_let)))
     (flags (-w -3))))
 

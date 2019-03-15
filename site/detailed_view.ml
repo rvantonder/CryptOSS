@@ -1,7 +1,7 @@
 open Core
 open Tyxml.Html
 
-open Cryptocodewatch
+open Cryptoss
 open Crypto
 
 let (!!) date =

@@ -1,5 +1,5 @@
 open Core
-open Cryptocodewatch
+open Cryptoss
 open Tyxml.Html
 
 module B = Bootstrap
@@ -45,7 +45,7 @@ let commafy day =
   |> String.filter ~f:(function | 'a'..'z' -> false | _ -> true)
 
 let title =
-  title (pcdata "CryptoCodeWatch")
+  title (pcdata "CryptOSS")
 
 let head =
   head title Css.all

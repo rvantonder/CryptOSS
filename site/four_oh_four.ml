@@ -3,7 +3,7 @@ open Tyxml.Html
 module B = Bootstrap
 
 let title =
-  title (pcdata "CryptoCodeWatch")
+  title (pcdata "CryptOSS")
 
 let head =
   head title Css.all
