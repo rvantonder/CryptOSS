@@ -2,7 +2,9 @@
 
 ## Looking for existing data?
 
-You can access existing, processed CSV data [here](XXX), which is accompanied by a [description of the data set](XXX). 
+You can access the existing CSV and raw data here:
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2595588.svg)](https://doi.org/10.5281/zenodo.2595588)
 
 ## Building from source and recreating the data set
 
@@ -31,7 +33,7 @@ Then: come back to this repository and do `make`. The scripts and command-line u
 
 ### Recreating the MSR data set
 
-Create a directory called `datastore`. Download and untar the [raw data file](XXX) in this directory.
+Create a directory called `datastore`. Download and untar the [raw data file](https://zenodo.org/record/2595588/files/raw-data-2018-01-21-to-2019-02-04.tar.gz?download=1) in this directory.
 In the toplevel of this repository, run `./pipeline.sh <N>`, where `N` is the number of parallel jobs (this speeds up processing). You can ignore any warnings/errors. Once finished, you'll have generated `.csv` files in the toplevel directory.
 
 Feel free to add your own data in the `datastore` (for some date), and rerun `./pipeline.sh`. This is the easiest way to interact with the tool.
