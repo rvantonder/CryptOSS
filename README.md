@@ -1,6 +1,10 @@
 # README
 
-## Building the command line
+## Looking for existing data?
+
+You can access existing, processed CSV data [here](XXX), which is accompanied by a [description of the data set](XXX). 
+
+## Building from source and recreating the data set
 
 - Install [opam](https://opam.ocaml.org/doc/Install.html). Typically:
 
@@ -23,26 +27,41 @@ Then:
 opam pin add github https://github.com/rvantonder/ocaml-github.git 
 ```
 
-Then: come back to this repository and do `make`. You should now be able to just run `./crunch.exe`, the main command line utility. If you want to build the MSR data set, continue below.
+Then: come back to this repository and do `make`. The scripts and command-line utilities should now work. Let's step through the possible uses. 
 
+### Recreating the MSR data set
 
-## MSR data publishing
+Create a directory called `datastore`. Download and untar the [raw data file](XXX) in this directory.
+In the toplevel of this repository, run `./pipeline.sh <N>`, where `N` is the number of parallel jobs (this speeds up processing). You can ignore any warnings/errors. Once finished, you'll have generated `.csv` files in the toplevel directory.
 
-Place the raw data files ([final link TBA](https://tba.com)) in a folder called `datastore`.
+Feel free to add your own data in the `datastore` (for some date), and rerun `./pipeline.sh`. This is the easiest way to interact with the tool.
 
-Run `./pipeline.sh`. 
+### Collecting data
 
-This starts off running 4 processes in parallel, decompressing the tars,
-generating intermediate CSVs for each date, and then delete the uncompressed
-data so it doesn't consume lots of space. Once all CSVs in the directories are
-generated, it is collated into a single file and sorted. At the end you get
-`all-sorted.csv`, the final file, in the current directory.  Generating the CSV
-takes about 1 hour on my Macbook pro 15".
+The `cronjob` folder contains the `crontab` for actively polling and collecting GitHub data. It's a good place to look if you want to understand how to collect data.
 
-This will first recover some data (for single days).  Then it will normalize
-the data (add null values for all dates and all keys in the raw data set). The
-final csv is `all-sorted-recovered-sanitized.csv`. 
+- `cronjob/crontab`: The crontab pulls data by invoking `cronjob/save.sh` and `cronjob/ranks.sh` at certain intervals (these can be customized).
 
-## Building the site
+- `cronjob/save.sh`: Essentially runs the `crunch.exe save` command (with a user-supplied GitHub token), see [here](https://github.com/rvantonder/CryptOSS/blob/master/cronjob/save.sh#L14). This command takes a list of comma-separated names registered in the `db.ml` [file](https://github.com/rvantonder/CryptOSS/blob/master/lib/db.ml). You can see the invocation of the `save.sh` script in the `crontab` [file](https://github.com/rvantonder/CryptOSS/blob/master/cronjob/crontab). 
 
-Run `./deploy.sh datastore/your-date`. This will generate a site for the chosen date in a folder called `release-site`.
+- `cronjob/ranks.sh`: Pulls cryptocurrency data from CoinMarketCap
+
+- `batches`: The crontab uses batches of cryptcurrencies (listed in files) [example](https://github.com/rvantonder/CryptOSS/blob/master/cronjob/batches/batch-0.txt)). Each batch corresponds to a list of cryptocurrencies that fit within the 5000 request rate limit for GitHub, so that batched requests can be spaced out over 24 hours. The interval and batch size can be changed depending on need (see `cronjob/batches/generate.sh`).
+
+Besides the cronjob, you can manually save data by running, say, `crunch.exe save Bitcoin -token <your-github-token>`. This produces a `.dat` file, as processed by `./pipeline.sh`.
+
+### Processing data
+
+If you want more control over data processing besides `./pipeline.sh`, you can use `crunch.exe load`. You can generate a CSV file from a `.dat` with a command like:
+
+```
+crunch.exe load -no-forks -csv -with-ranks <ranks.json file from CoinMarketCap> -with-date <DD-MM-YYYY> <some-dat-file>.dat
+```
+
+A similar command is [used in the csv-of-dat.sh script](https://github.com/rvantonder/CryptOSS/blob/master/csv-of-dat.sh#L17) to generate the MSR data set.
+
+You can generate aggregate values by running `./crunch.exe aggregate` on some directory containing `.dat` files. This will create `.agg` files. `.agg` files can be used to generate the web view.
+
+### Generating the web view
+
+Have a look at `./deploy.sh`, [here](https://github.com/rvantonder/CryptOSS/blob/master/deploy.sh#L13-L18). If you want to create the webview for a particular date, say Oct 10, 2018 (containing `.dat`s), simply run `./deploy.sh datastore/2018-10-10`. This will generate a web view in `docs`.
