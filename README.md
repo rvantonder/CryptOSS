@@ -67,3 +67,7 @@ You can generate aggregate values by running `./crunch.exe aggregate` on some di
 ### Generating the web view
 
 Have a look at `./deploy.sh`, [here](https://github.com/rvantonder/CryptOSS/blob/master/deploy.sh#L13-L18). If you want to create the webview for a particular date, say Oct 10, 2018 (containing `.dat`s), simply run `./deploy.sh datastore/2018-10-10`. This will generate a web view in `docs`.
+
+-----
+
+The DOI for this repository is: [![DOI](https://zenodo.org/badge/169338876.svg)](https://zenodo.org/badge/latestdoi/169338876)
