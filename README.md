@@ -1,6 +1,6 @@
 # README
 
-## Looking for existing data?
+## Data
 
 You can access the existing CSV and raw data here:
 
