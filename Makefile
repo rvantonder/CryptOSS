@@ -1,5 +1,5 @@
 all:
-	jbuilder build @install @DEFAULT
+	dune build @install @DEFAULT
 
 site:
 	./site_html_generator.exe -dir .
@@ -8,15 +8,15 @@ server:
 	./server.exe -v -d -p 3333
 
 install:
-	jbuilder install
+	dune install
 
 test:
-	jbuilder runtest
+	dune runtest
 
 clean:
-	jbuilder clean
+	dune clean
 
 uninstall:
-	jbuilder uninstall
+	dune uninstall
 
 .PHONY: all site server install test clean uninstall

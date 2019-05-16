@@ -72,7 +72,7 @@ let _ =
   |> disclaimer
   |> four_oh_four
   (*|> App.ssl ~cert:"certs/cert.pem" ~key:"certs/decryptedkey.pem"*)
-  |> middleware @@ Middleware.static ~local_path:"./static/css" ~uri_prefix:"/static/css"
-  |> middleware @@ Middleware.static ~local_path:"./static/js" ~uri_prefix:"/static/js"
-  |> middleware @@ Middleware.static ~local_path:"./static" ~uri_prefix:"/static"
+  (*  |> middleware @@ Middleware.static ~local_path:"./static/css" ~uri_prefix:"/static/css"
+      |> middleware @@ Middleware.static ~local_path:"./static/js" ~uri_prefix:"/static/js"
+      |> middleware @@ Middleware.static ~local_path:"./static" ~uri_prefix:"/static"*)
   |> App.run_command

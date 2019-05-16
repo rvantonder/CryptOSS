@@ -1,5 +1,4 @@
 open Core
-open Yojson
 
 type t = Record.t String.Table.t Date.Table.t
 
@@ -73,11 +72,11 @@ let () =
     Date.Table.fold
       table
       ~init:String.Set.empty
-      ~f:(fun ~key ~data set ->
+      ~f:(fun ~key:_ ~data set ->
           String.Table.fold
             data
             ~init:set
-            ~f:(fun ~key ~data set -> String.Set.add set key))
+            ~f:(fun ~key ~data:_ set -> String.Set.add set key))
   in
   (* generate null lines for all repos for missing dates *)
   let records_added = ref 0 in

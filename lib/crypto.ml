@@ -91,21 +91,21 @@ module Stats = struct
              match repo_contributor_stats_author with
              | Some { user_login; _ } ->
                Some { username = user_login
-               ; total = repo_contributor_stats_total
-               ; weeks = List.map
-                     ~f:(fun { repo_contribution_week_w
-                             ; repo_contribution_week_a
-                             ; repo_contribution_week_d
-                             ; repo_contribution_week_c
-                             } ->
-                          { w = repo_contribution_week_w
-                          ; a = repo_contribution_week_a
-                          ; d = repo_contribution_week_d
-                          ; c = repo_contribution_week_c
-                          }
-                        )
-                     repo_contributor_stats_weeks
-               }
+                    ; total = repo_contributor_stats_total
+                    ; weeks = List.map
+                          ~f:(fun { repo_contribution_week_w
+                                  ; repo_contribution_week_a
+                                  ; repo_contribution_week_d
+                                  ; repo_contribution_week_c
+                                  } ->
+                               { w = repo_contribution_week_w
+                               ; a = repo_contribution_week_a
+                               ; d = repo_contribution_week_d
+                               ; c = repo_contribution_week_c
+                               }
+                             )
+                          repo_contributor_stats_weeks
+                    }
              | None -> None)
       |> return
     end
@@ -612,11 +612,11 @@ module Stats = struct
 
     (* Fork policy: include forks *)
     let contributors_7d_merged =
-        begin
-          List.dedup_and_sort
-            ~compare:String.compare
-            (contributors_7d @ contributors_7d')
-        end
+      begin
+        List.dedup_and_sort
+          ~compare:String.compare
+          (contributors_7d @ contributors_7d')
+      end
     in
 
     (* Fork policy: exclude forks *)
@@ -626,25 +626,25 @@ module Stats = struct
         | true -> []
         | false -> total_contributors_up_to_100'
       in
-          List.dedup_and_sort
-            ~compare:
-              (fun { username; _ } { username = username'; _ } ->
-                 String.compare username username')
-            (total_contributors_up_to_100 @ total_contributors_up_to_100')
+      List.dedup_and_sort
+        ~compare:
+          (fun { username; _ } { username = username'; _ } ->
+             String.compare username username')
+        (total_contributors_up_to_100 @ total_contributors_up_to_100')
     in
 
     (* Fork policy: exclude forks *)
     let commits_1y_per_week_merged =
       let commits_1y_per_week' =
-      match forked with
+        match forked with
         | true -> []
         | false -> commits_1y_per_week'
       in
-        begin
-          match commits_1y_per_week, commits_1y_per_week' with
-          | [],s when List.length s > 0 -> s
-          | s,[] when List.length s > 0 -> s
-          | commits_1y_per_week, commits_1y_per_week' ->
+      begin
+        match commits_1y_per_week, commits_1y_per_week' with
+        | [],s when List.length s > 0 -> s
+        | s,[] when List.length s > 0 -> s
+        | commits_1y_per_week, commits_1y_per_week' ->
           List.map2
             commits_1y_per_week
             commits_1y_per_week'
@@ -655,33 +655,33 @@ module Stats = struct
             Format.printf "List 1 length: %d@." @@ List.length commits_1y_per_week;
             Format.printf "List 2 length: %d@." @@ List.length commits_1y_per_week';
             failwith "Guaranteed 52 weeks in a year for both lists"
-        end
+      end
     in
 
     (* Fork policy: exclude forks *)
     let changes_1y_per_week_merged =
       begin
-      let changes_1y_per_week' =
-        match forked with
-        | true -> []
-        | false -> changes_1y_per_week'
-      in
-          let table = Hashtbl.Poly.create () in
-      List.iter
-        (changes_1y_per_week @ changes_1y_per_week')
-            ~f:(fun { added; deleted; week_timestamp } ->
-                Hashtbl.update
-                  table
-                  week_timestamp
-                  ~f:(function
-                      | None -> (added, deleted)
-                      | Some (added', deleted') ->
-                        added+added', deleted+deleted'));
-          table
-          |> Hashtbl.to_alist
-          |> List.map ~f:(fun (week_timestamp, (added, deleted)) ->
-              { added; deleted; week_timestamp })
-        end
+        let changes_1y_per_week' =
+          match forked with
+          | true -> []
+          | false -> changes_1y_per_week'
+        in
+        let table = Hashtbl.Poly.create () in
+        List.iter
+          (changes_1y_per_week @ changes_1y_per_week')
+          ~f:(fun { added; deleted; week_timestamp } ->
+              Hashtbl.update
+                table
+                week_timestamp
+                ~f:(function
+                    | None -> (added, deleted)
+                    | Some (added', deleted') ->
+                      added+added', deleted+deleted'));
+        table
+        |> Hashtbl.to_alist
+        |> List.map ~f:(fun (week_timestamp, (added, deleted)) ->
+            { added; deleted; week_timestamp })
+      end
     in
 
     (* Fork policy: always included *)
@@ -735,7 +735,7 @@ module Repo = struct
   [@@deriving sexp]
 
   (** Disabled. This will potentially generate shit tons of requests without much
-     useful info *)
+      useful info *)
   let contributor_info contributors =
     let enabled = false in
     match enabled with
@@ -774,12 +774,12 @@ module Repo = struct
     }
 end
 
-  type t =
-    { name : string
-    ; github : string
-    ; repos : Repo.t list
-    }
-  [@@deriving sexp]
+type t =
+  { name : string
+  ; github : string
+  ; repos : Repo.t list
+  }
+[@@deriving sexp]
 
 (** Fixed? User.repositories seems to not have accurate numbers for watchers.
     this will now return it by calling repo info...*)

@@ -12,7 +12,7 @@ let get dir =
 let load dir =
   List.filter_map
     Db.cryptos
-    ~f:(fun (display_name, safe_name, github) ->
+    ~f:(fun (display_name, safe_name, _github) ->
         let filename = Option.value safe_name ~default:display_name in
         match Crypto.of_file (dir ^/ filename ^ ".dat") with
         | Some crypto -> Some crypto
