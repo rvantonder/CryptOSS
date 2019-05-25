@@ -2,6 +2,12 @@ open Core
 open Cryptoss
 open Tyxml.Html
 
+let (!!) date =
+  let year = Date.year date in
+  let month = Date.month date |> Month.to_int in
+  let day = Date.day date in
+  Format.sprintf "%d-%02d-%02d" year month day
+
 module B = Bootstrap
 
 let scripts =
@@ -298,11 +304,23 @@ let show_everything date =
     ~a:[ a_id "show-everything"
        ; a_class [ "btn btn-lg btn-block btn-outline-primary" ]
        (* XXX: date/all *)
-       ; a_onclick ("window.location.href='/"^date^"/all'") ]
+       ; a_onclick ("window.location.href='" ^/ Site_prefix.prefix ^/ date ^/ "all'") ]
     [ pcdata "EXPAND" ]
 
 
 let body table_data date =
+  let next_date =
+    String.substr_replace_all date ~pattern:"-" ~with_:""
+    |> Date.of_string_iso8601_basic ~pos:0
+    |> Fn.flip Date.add_days 1
+    |> fun x -> !!x
+  in
+  let prev_date =
+    String.substr_replace_all date ~pattern:"-" ~with_:""
+    |> Date.of_string_iso8601_basic ~pos:0
+    |> Fn.flip Date.add_days (-1)
+    |> fun x -> !!x
+  in
   body
     begin
       scripts @ [
@@ -313,8 +331,25 @@ let body table_data date =
               ; br ()
               ]
           ]
+
         ; B.row [
-              the_table table_data
+            div  ~a:[ a_class [ "col-2"; ] ] [
+              p [
+                a ~a:[ a_href (Xml.uri_of_string (Site_prefix.prefix ^/ prev_date)) ] [ pcdata "previous" ]
+              ; br ()
+              ; pcdata prev_date
+              ]
+            ]
+          ; div  ~a:[ a_class [ "col-10";  "text-right" ] ] [
+              p [
+                a ~a:[ a_href (Xml.uri_of_string (Site_prefix.prefix ^/ next_date)) ] [ pcdata "next" ]
+              ; br ()
+              ; pcdata next_date
+              ]
+            ]
+          ]
+        ; B.row [
+            the_table table_data
           ]
         ; B.row [
             B.col_12 [

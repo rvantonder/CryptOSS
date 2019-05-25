@@ -46,9 +46,9 @@ let disclaimer date () =
 let pages date data_directory =
   [ (".", "index.html", (index date data_directory), (0,0))
   ; (".", "all.html", (all date data_directory), (0,0))
-  ; (".", "faq.html", (faq date ()), (0,0))
-  ; (".", "404.html", (four_oh_four date ()), (0,0))
-  ; (".", "disclaimer.html", (disclaimer date ()), (0,0))
+    (*  ; (".", "faq.html", (faq date ()), (0,0))  *)
+    (* ; (".", "404.html", (four_oh_four date ()), (0,0)) *)
+    (* ; (".", "disclaimer.html", (disclaimer date ()), (0,0)) *)
   ]
 
 let write output_dir name sort_by_column direction page =

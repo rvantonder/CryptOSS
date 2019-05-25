@@ -37,8 +37,8 @@ let scripts =
   let (!) path = script ~a:[a_src (Xml.uri_of_string path)] (pcdata "") in
   [ !"https://code.jquery.com/jquery-3.2.1.min.js"
   ; !"https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.29.2/js/jquery.tablesorter.min.js"
-(*  ; !"https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"
-    ; !"https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.18/c3.js"*)
+  (*  ; !"https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"
+      ; !"https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.18/c3.js"*)
   ; !"https://code.highcharts.com/stock/highstock.js"
   ; !"https://code.highcharts.com/stock/modules/exporting.js"
   ; !"../static/js/custom.js"
@@ -136,9 +136,9 @@ let cell_tuple (additions, deletions) =
 
 let cell_single value =
   let (!) = commafy in
-    td [
-      blue_pcdata !value
-    ]
+  td [
+    blue_pcdata !value
+  ]
 
 
 let hidden text =
@@ -351,10 +351,10 @@ let contributor_table repos =
         Format.printf "Some contributors:%d@." @@ List.length contributors;
         contributors
       )
-(*    |> List.dedup
-      ~compare:(fun { Repo.username; _ }
-                 { Repo.username = username'; _ } ->
-                 String.compare username username')*)
+    (*    |> List.dedup
+          ~compare:(fun { Repo.username; _ }
+                     { Repo.username = username'; _ } ->
+                     String.compare username username')*)
   in
   Format.printf "Dedup repos size: %d@." @@ List.length dedup_repos;
   [
@@ -420,13 +420,25 @@ let body crypto date stats =
     begin
       scripts @
       [ br ()
-      ; a ~a:[ a_href (Xml.uri_of_string (Site_prefix.prefix ^/ prev_date ^/ "currency" ^/ crypto.name)) ] [ pcdata "prev" ]
-      ; br ()
-      ; a ~a:[ a_href (Xml.uri_of_string (Site_prefix.prefix ^/ next_date ^/ "currency" ^/ crypto.name)) ] [ pcdata "next" ]
-      ; br ()
       ; B.container ([
             h1 ~a:[ a_class ["text-center"] ] [
               pcdata crypto.name
+            ]
+          ; B.row [
+              div  ~a:[ a_class [ "col-2"; ] ] [
+                p [
+                  a ~a:[ a_href (Xml.uri_of_string (Site_prefix.prefix ^/ prev_date ^/ "currency" ^/ crypto.name)) ] [ pcdata "prev" ]
+                ; br  ()
+                ; pcdata prev_date
+                ]
+              ]
+            ; div  ~a:[ a_class [ "col-10";  "text-right" ] ] [
+                p [
+                  a ~a:[ a_href (Xml.uri_of_string (Site_prefix.prefix ^/ next_date ^/ "currency" ^/ crypto.name)) ] [ pcdata "next" ]
+                ; br ()
+                ; pcdata next_date
+                ]
+              ]
             ]
           ; hr ()
           ; B.row [ repo_table crypto ]
