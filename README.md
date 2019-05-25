@@ -11,13 +11,16 @@ You can access the existing CSV and raw data here:
 - Install [opam](https://opam.ocaml.org/doc/Install.html). Typically:
 
 ```
-sudo apt-get install aspcud
-sudo apt-get install opam
+sh <(curl -sL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)
 ```
 
-- Run `opam init --comp 4.05.0`
+- Then run 
+```
+opam init
+opam switch create 4.05.0 4.05.0 
+```
 
-- Do the following once opam is installed:
+- Next:
 
 ```
 opam install core opium yojson hmap tyxml
@@ -29,9 +32,9 @@ Then:
 opam pin add github https://github.com/rvantonder/ocaml-github.git 
 ```
 
-Then: come back to this repository and do `make`. The scripts and command-line utilities should now work. Let's step through the possible uses. 
+Then type `make` in this repository. The scripts and command-line utilities should now work. Let's step through the possible uses. 
 
-### Recreating the MSR data set
+### Recreating the MSR data set from the raw data
 
 Create a directory called `datastore`. Download and untar the [raw data file](https://zenodo.org/record/2595588/files/raw-data-2018-01-21-to-2019-02-04.tar.gz?download=1) in this directory.
 In the toplevel of this repository, run `./pipeline.sh <N>`, where `N` is the number of parallel jobs (this speeds up processing). You can ignore any warnings/errors. Once finished, you'll have generated `.csv` files in the toplevel directory.
@@ -70,4 +73,4 @@ Have a look at `./deploy.sh`, [here](https://github.com/rvantonder/CryptOSS/blob
 
 -----
 
-The DOI for this repository is: [![DOI](https://zenodo.org/badge/169338876.svg)](https://zenodo.org/badge/latestdoi/169338876)
+[![DOI](https://zenodo.org/badge/169338876.svg)](https://zenodo.org/badge/latestdoi/169338876)
