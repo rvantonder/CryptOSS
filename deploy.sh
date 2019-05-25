@@ -24,7 +24,7 @@ cd $RELEASE_TARGET/$DATE/currency
 ls * | xargs -L 1 -I % mv %{,.html}
 cd ../../../
 
-cp -r site/static $RELEASE_TARGET/$DATE/
+# cp -r site/static $RELEASE_TARGET
 
 # delete .dat, .agg
 cd $1
