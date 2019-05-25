@@ -41,7 +41,7 @@ let scripts =
       ; !"https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.18/c3.js"*)
   ; !"https://code.highcharts.com/stock/highstock.js"
   ; !"https://code.highcharts.com/stock/modules/exporting.js"
-  ; !"../static/js/custom.js"
+  ; !"../../static/js/custom.js"
   ]
 
 let title crypto =

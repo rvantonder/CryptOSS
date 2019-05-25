@@ -13,7 +13,7 @@ let cdn =
     <head profile="http://www.w3.org/2005/10/profile">
     <link rel="icon"
         type="image/png"
-        href="/static/favicon.png">
+        href="../static/favicon.png">
     |}
   ]
 
@@ -34,10 +34,10 @@ let analytics =
 
 let all =
   [ Unsafe.data analytics ] @
-  cdn @ [ !"static/css/custom.css" ]
+  cdn @ [ !"../static/css/custom.css" ]
 
 let detailed =
   [ Unsafe.data analytics ] @
   cdn @
-  [ !"../static/css/custom.css"
+  [ !"../../static/css/custom.css"
   ; !"https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.18/c3.min.css"]

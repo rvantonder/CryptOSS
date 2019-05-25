@@ -15,7 +15,7 @@ let scripts =
   [ !"https://code.jquery.com/jquery-3.2.1.min.js"
   ; !"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"
   ; !"https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.29.2/js/jquery.tablesorter.min.js"
-  ; !"static/js/custom.js"
+  ; !"../static/js/custom.js"
   ]
 
 let green_pcdata text =
