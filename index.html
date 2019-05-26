@@ -1,100 +1,123 @@
 <html>
-<head>
-<!--<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
-<link rel="stylesheet" type="text/css" href="https://www.bootstrap-year-calendar.com/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="https://www.bootstrap-year-calendar.com/download/v1.1.0/bootstrap-year-calendar.min.css">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
-<link rel="stylesheet" type="text/css" href="https://www.bootstrap-year-calendar.com/css/style.css">
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="https://www.bootstrap-year-calendar.com/download/v1.1.0/bootstrap-year-calendar.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112826887-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-<a href="https://github.com/rvantonder/cryptoss" class="github-corner" aria-label="View source on GitHub"><svg width="90" height="90" viewBox="0 0 250 250" style="position:absolute; fill:#2c8ec9; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+        gtag('config', 'UA-112826887-1');
+    </script>
+    <head>
+        <!--<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+        <link rel="stylesheet" type="text/css" href="https://www.bootstrap-year-calendar.com/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://www.bootstrap-year-calendar.com/download/v1.1.0/bootstrap-year-calendar.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
+        <link rel="stylesheet" type="text/css" href="https://www.bootstrap-year-calendar.com/css/style.css">
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.4/css/all.css"/>
+        <link rel="stylesheet" href="static/css/custom.css"/>
+        <style>
+            .calendar table td {
+                color: white
+            }
 
-<style>
+            .calendar .year-neighbor2, .calendar table.month tr td.disabled, .calendar table.month tr td.disabled:hover {
+                color: grey !important;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://www.bootstrap-year-calendar.com/download/v1.1.0/bootstrap-year-calendar.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
+        <a href="https://github.com/rvantonder/cryptoss" class="github-corner" aria-label="View source on GitHub">
+            <svg width="90" height="90" viewBox="0 0 250 250" style="position:absolute; fill:#2c8ec9; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+                <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+                <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+                <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+            </svg>
+        </a>
+        <style>
+            .github-corner:hover .octo-arm {
+                animation: octocat-wave 560ms ease-in-out
+            }
 
-.calendar table td {
-    color: white
-}
+            @keyframes octocat-wave {
+                0%,100% {
+                    transform: rotate(0)
+                }
 
-.calendar .year-neighbor2, .calendar table.month tr td.disabled, .calendar table.month tr td.disabled:hover {
-    color: grey !important;
-}
+                20%,60% {
+                    transform: rotate(-25deg)
+                }
 
-</style>
-</head>
+                40%,80% {
+                    transform: rotate(10deg)
+                }
+            }
 
-<body>
-  <div class="container">
-  <div id="calendar" class="calendar"></div>
-  <script type="text/javascript">
-    $(function() {
-        $('#calendar').calendar({
-            style:'background',
-            clickDay: function(e) {
-                var d = new Date(e.date)
-                var s =  d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)
-                window.location.href = s
-            },
-            dataSource: [
-                {
-                    startDate: new Date(2018, 0, 21),
-                    endDate: new Date(2019, 1, 4)
-                },
-            ],
-            disabledDays: [
-                new Date(2018, 1, 1),
-                new Date(2018, 1,13),
-                new Date(2018, 1,17),
-                new Date(2018, 2,03),
-                new Date(2018, 2,26),
-                new Date(2018, 4, 1),
-                new Date(2018, 4, 2),
-                new Date(2018, 4, 3),
-                new Date(2018, 4,10),
-                new Date(2018, 4,20),
-                new Date(2018, 4,21),
-                new Date(2018, 4,22),
-                new Date(2018, 4,23),
-                new Date(2018, 4,24),
-                new Date(2018, 4,25),
-                new Date(2018, 4,26),
-                new Date(2018, 4,27),
-                new Date(2018, 4,28),
-                new Date(2018, 4,29),
-                new Date(2018, 4,30),
-                new Date(2018, 4,31),
-                new Date(2018, 5, 8),
-                new Date(2018, 5,13),
-                new Date(2018, 5,23),
-                new Date(2018, 6, 1),
-                new Date(2018, 6,16),
-                new Date(2018, 6,17),
-                new Date(2018, 6,20),
-                new Date(2018, 7,10),
-                new Date(2018, 7,21),
-                new Date(2018, 8, 9),
-                new Date(2018, 8,10),
-                new Date(2018, 8,30),
-                new Date(2018, 9,12),
-                new Date(2018, 9,23),
-                new Date(2018, 9,30),
-                new Date(2018, 9,31),
-                new Date(2018,10,15),
-                new Date(2018,11, 6),
-                new Date(2018,11, 7),
-                new Date(2018,11, 8),
-                new Date(2018,11,15),
-                new Date(2018,11,19),
-                new Date(2018,11,21)
-            ]
-        });
-        $('#calendar').data('calendar').setYear(2018)
-    });
+            @media (max-width: 500px) {
+                .github-corner:hover .octo-arm {
+                    animation:none
+                }
 
-  </script>
-  </div>
-</body>
+                .github-corner .octo-arm {
+                    animation: octocat-wave 560ms ease-in-out
+                }
+            }
+        </style>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-1 col-sm-offset-5">
+                    <h1>&nbsp;&nbsp;&nbsp;CryptOSS</h1>
+                </div>
+            </div>
+            <br/>
+            <div id="calendar" class="calendar"></div>
+            <script type="text/javascript">
+                $(function() {
+                    $('#calendar').calendar({
+                        style: 'background',
+                        clickDay: function(e) {
+                            var d = new Date(e.date)
+                            var s = d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)
+                            window.location.href = s
+                        },
+                        dataSource: [{
+                            startDate: new Date(2018,0,21),
+                            endDate: new Date(2019,1,4)
+                        }, ],
+                        disabledDays: [new Date(2018,1,1), new Date(2018,1,13), new Date(2018,1,17), new Date(2018,2,03), new Date(2018,2,26), new Date(2018,4,1), new Date(2018,4,2), new Date(2018,4,3), new Date(2018,4,10), new Date(2018,4,20), new Date(2018,4,21), new Date(2018,4,22), new Date(2018,4,23), new Date(2018,4,24), new Date(2018,4,25), new Date(2018,4,26), new Date(2018,4,27), new Date(2018,4,28), new Date(2018,4,29), new Date(2018,4,30), new Date(2018,4,31), new Date(2018,5,8), new Date(2018,5,13), new Date(2018,5,23), new Date(2018,6,1), new Date(2018,6,16), new Date(2018,6,17), new Date(2018,6,20), new Date(2018,7,10), new Date(2018,7,21), new Date(2018,8,9), new Date(2018,8,10), new Date(2018,8,30), new Date(2018,9,12), new Date(2018,9,23), new Date(2018,9,30), new Date(2018,9,31), new Date(2018,10,15), new Date(2018,11,6), new Date(2018,11,7), new Date(2018,11,8), new Date(2018,11,15), new Date(2018,11,19), new Date(2018,11,21)]
+                    });
+                    $('#calendar').data('calendar').setYear(2018)
+                });
+            </script>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-2">
+                    <p>
+                        <a href="/CryptOSS/faq">FAQ</a>
+                    </p>
+                </div>
+                <div class="col-2">
+                    <p>
+                        <a href="/CryptOSS/disclaimer">DISCLAIMER</a>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <small>&copy;Copyright CryptoOSS 2019</small>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
+
