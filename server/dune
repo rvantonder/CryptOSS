@@ -1,0 +1,10 @@
+(executable
+ (libraries core hmap opium)
+ (name server)
+ (flags -w -3))
+
+(alias
+ (name DEFAULT)
+ (deps
+  server.exe
+  (source_tree certs)))

@@ -1,0 +1,19 @@
+opam-version: "1.2"
+version: "1.0"
+maintainer: "rvantonder@gmail.com"
+authors: ["rvantonder"]
+homepage: "https://github.com/rvantonder/CryptOSS"
+bug-reports: "https://github.com/rvantonder/CryptOSS/issues"
+dev-repo: "https://github.com/rvantonder/CryptOSS.git"
+license: "MIT"
+build: [["jbuilder" "build" "-p" name "-j" jobs "@install"]]
+build-test: [["jbuilder" "runtest" "-p" name "-j" jobs]]
+depends: [
+  "core"
+  "opium"
+  "tls"
+  "yojson"
+  "github"
+  "hmap"
+  "ounit" {test}
+]

@@ -1,0 +1,8 @@
+(executable
+ (libraries core yojson)
+ (modules sanitize record)
+ (name sanitize))
+
+(alias
+ (name DEFAULT)
+ (deps sanitize.exe))

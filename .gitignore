@@ -1,0 +1,11 @@
+.merlin
+_build
+*.install
+*.pyc
+*.swp
+*.dat
+*#.*
+datastore
+upload
+*.csv
+*.txt

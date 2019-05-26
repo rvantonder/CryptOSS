@@ -1,0 +1,12 @@
+(executables
+ (names site_html_generator)
+ (libraries core cryptoss tyxml yojson)
+ (preprocess
+  (pps ppx_let))
+ (flags -w -3))
+
+(alias
+ (name DEFAULT)
+ (deps
+  site_html_generator.exe
+  (source_tree static)))

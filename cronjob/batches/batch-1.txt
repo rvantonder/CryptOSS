@@ -1,0 +1,1 @@
+Monero,NEO,Qtum,Bitcoin Gold,Ethereum Classic,ICON,Lisk,RaiBlocks,Siacoin,Bytecoin,Zcash,Verge
