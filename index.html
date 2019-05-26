@@ -1,0 +1,98 @@
+<html>
+<head>
+<!--<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+<link rel="stylesheet" type="text/css" href="https://www.bootstrap-year-calendar.com/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://www.bootstrap-year-calendar.com/download/v1.1.0/bootstrap-year-calendar.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
+<link rel="stylesheet" type="text/css" href="https://www.bootstrap-year-calendar.com/css/style.css">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://www.bootstrap-year-calendar.com/download/v1.1.0/bootstrap-year-calendar.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
+
+<style>
+
+.calendar table td {
+    color: white
+}
+
+.calendar .year-neighbor2, .calendar table.month tr td.disabled, .calendar table.month tr td.disabled:hover {
+    color: grey !important;
+}
+
+</style>
+</head>
+
+<body>
+  <div class="container">
+  <div id="calendar" class="calendar"></div>
+  <script type="text/javascript">
+    $(function() {
+        $('#calendar').calendar({
+            style:'background',
+            clickDay: function(e) {
+                var d = new Date(e.date)
+                var s =  d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)
+                window.location.href = + s
+            },
+            dataSource: [
+                {
+                    startDate: new Date(2018, 0, 21),
+                    endDate: new Date(2019, 1, 4)
+                },
+            ],
+            disabledDays: [
+                new Date(2018,02,01),
+                new Date(2018,02,13),
+                new Date(2018,02,17),
+                new Date(2018,03,03),
+                new Date(2018,05,01),
+                new Date(2018,05,02),
+                new Date(2018,05,03),
+                new Date(2018,05,10),
+                new Date(2018,05,19),
+                new Date(2018,05,20),
+                new Date(2018,05,21),
+                new Date(2018,05,22),
+                new Date(2018,05,23),
+                new Date(2018,05,24),
+                new Date(2018,05,25),
+                new Date(2018,05,26),
+                new Date(2018,05,27),
+                new Date(2018,05,28),
+                new Date(2018,05,29),
+                new Date(2018,05,30),
+                new Date(2018,05,31),
+                new Date(2018,06,01),
+                new Date(2018,06,13),
+                new Date(2018,06,23),
+                new Date(2018,07,01),
+                new Date(2018,07,16),
+                new Date(2018,07,17),
+                new Date(2018,07,20),
+                new Date(2018,08,10),
+                new Date(2018,08,21),
+                new Date(2018,09,09),
+                new Date(2018,09,10),
+                new Date(2018,09,30),
+                new Date(2018,10,12),
+                new Date(2018,10,23),
+                new Date(2018,10,30),
+                new Date(2018,10,31),
+                new Date(2018,11,15),
+                new Date(2018,12,06),
+                new Date(2018,12,07),
+                new Date(2018,12,08),
+                new Date(2018,12,15),
+                new Date(2018,12,19),
+                new Date(2018,12,21)
+            ]
+        });
+        $('#calendar').data('calendar').setYear(2018)
+    });
+
+  </script>
+  </div>
+</body>
+</html>
