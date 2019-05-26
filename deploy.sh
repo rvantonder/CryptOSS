@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 RELEASE_TARGET=docs
 DATE=`basename $1`
 
