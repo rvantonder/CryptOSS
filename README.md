@@ -50,7 +50,7 @@ opam switch create 4.05.0 4.05.0
 - Next:
 
 ```
-opam install core opium yojson hmap tyxml
+opam install core opium yojson hmap tyxml tls
 ```
 
 Then:
